@@ -329,6 +329,3 @@ az group delete --name devops --yes --no-wait
 ```
 
 ---
-
-Would you like me to extend this guide into a **GitHub-ready README.md** (with emojis, table of contents, and diagram for CI/CD flow)?
-It would make a perfect documentation addition to your repo `docker-hello-world/k8s`.
