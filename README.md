@@ -21,7 +21,7 @@ This guide walks you through creating an **Azure Container Registry (ACR)**, log
 2. Click **Create**
 3. Fill in details:
 
-   * **Registry name:** `atulkamble2`
+   * **Registry name:** `atulkamble`
    * **Resource group:** choose or create one
    * **SKU:** `Basic`
    * **Admin user:** **Enable**
@@ -77,13 +77,13 @@ az login
 In Azure Portal → **ACR** → **Access keys**
 Enable **Admin user** and note:
 
-* **Username:** atulkamble2
+* **Username:** atulkamble
 * **Password:** (copy from Access Keys)
 
 Now login to your ACR:
 
 ```bash
-sudo docker login atulkamble2.azurecr.io
+sudo docker login atulkamble.azurecr.io
 ```
 
 Enter your username and password when prompted.
@@ -104,7 +104,7 @@ cd docker-hello-world
 Build the image using your ACR path:
 
 ```bash
-sudo docker build -t atulkamble2.azurecr.io/cloudnautic/hello-world .
+sudo docker build -t atulkamble.azurecr.io/cloudnautic/hello-world .
 ```
 
 Verify:
@@ -118,7 +118,7 @@ sudo docker images
 ## ☁️ Step 7 — Push Image to ACR
 
 ```bash
-sudo docker push atulkamble2.azurecr.io/cloudnautic/hello-world
+sudo docker push atulkamble.azurecr.io/cloudnautic/hello-world
 ```
 
 Wait until upload completes successfully.
@@ -142,7 +142,7 @@ You should see your image listed with its tag.
 | Install Docker    | `sudo apt install docker.io`                  |
 | Install Azure CLI | `sudo apt install azure-cli`                  |
 | Login Azure       | `az login`                                    |
-| Login ACR         | `docker login atulkamble2.azurecr.io`         |
+| Login ACR         | `docker login atulkamble.azurecr.io`         |
 | Build Image       | `docker build -t <registry>/<repo>/<image> .` |
 | Push Image        | `docker push <registry>/<repo>/<image>`       |
 
@@ -231,7 +231,7 @@ kubectl get nodes
 This step allows AKS to **pull images** from your private ACR without manual Docker login.
 
 ```bash
-az aks update -g devops -n mycluster --attach-acr atulkamble2
+az aks update -g devops -n mycluster --attach-acr atulkamble
 ```
 
 Confirm:
@@ -274,7 +274,7 @@ spec:
     spec:
       containers:
       - name: hello-web
-        image: atulkamble2.azurecr.io/cloudnautic/hello-world:latest
+        image: atulkamble.azurecr.io/cloudnautic/hello-world:latest
         ports:
         - containerPort: 80
 ```
